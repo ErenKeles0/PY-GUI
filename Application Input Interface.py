@@ -1,7 +1,7 @@
 from tkinter import *
+import sqlite3
 #user info
-users=("eren/123")
-
+users=[]
 
 
 #window create
@@ -15,6 +15,16 @@ window.configure(background="black")
 
 #welcome title
 Label(window,text="Welcome to Py GUI",font="Verdana 48", bg="black", fg="white").pack()
+
+#singup function
+def signup():
+    #get username and password
+    username=usernameentry.get()
+    password=passwordentry.get()
+    users.append(username+"/"+password)
+
+
+
 
 
 #login function
@@ -46,6 +56,8 @@ passwordentry.pack()
 loginbuton = Button(text="Login",command=login,font="Verdana 24",bg="White", fg="black").pack()
 loginsuccessful = Label(text="",font="Verdana 48", bg="black", fg="white")
 loginsuccessful.pack(side=BOTTOM,)
+
+signupbuton = Button(text="signup",command=signup,font="Verdana 24",bg="White", fg="black").pack()
 
 #close button
 closebuton = Button(text="Exit",command=close,font="Verdana 24",bg="White", fg="black")
