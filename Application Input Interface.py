@@ -1,5 +1,6 @@
 from tkinter import *
 import sqlite3
+import string
 #user info
 users=[]
 
@@ -14,16 +15,26 @@ window.overrideredirect(True)
 window.configure(background="black")
 
 #welcome title
-Label(window,text="Welcome to Py GUI",font="Verdana 48", bg="black", fg="white").pack()
+Label(window,text="Welcome to Py GUI",font="Verdana 48", bg="black", fg="white").place(x=660,y=20)
 
 #singup function
 def signup():
     #get username and password
     username=usernameentry.get()
     password=passwordentry.get()
-    users.append(username+"/"+password)
+    
+    
+    if len(username)<8 or len(password)<8:
+        loginsuccessful["text"]= "Please enter password and username longer than 8 characters"
 
-
+    else:
+        for i in username:#check letters
+            if i in string.punctuation:#if username have special char
+                loginsuccessful["text"]= "Please do not use special characters in the username"
+                break
+            else:#everything okay  
+                loginsuccessful["text"]= "SignUp Sucsessfuly"
+                users.append(username+"/"+password)
 
 
 
@@ -37,9 +48,9 @@ def login():
 
     #Check the accuracy of the information
     if userss in users :
-        loginsuccessful["text"]= "Giris Basarili"
+        loginsuccessful["text"]= "Login Sucsessfuly"
     else:  
-        loginsuccessful["text"]= "Giris Basarisiz"
+        loginsuccessful["text"]= "Login Failed"
 
 #close application function
 def close():
@@ -48,18 +59,18 @@ def close():
 
 #user name and password boxes
 usernameentry = Entry(window,font="Verdana 32",bg="black", fg="white")
-usernameentry.pack()
+usernameentry.place(x=700,y=500)
 passwordentry = Entry(window,textvariable=StringVar(), show='*',font="Verdana 32",bg="black", fg="white")
-passwordentry.pack()
+passwordentry.place(x=700,y=600)
 
 #login button
-loginbuton = Button(text="Login",command=login,font="Verdana 24",bg="White", fg="black").pack()
-loginsuccessful = Label(text="",font="Verdana 48", bg="black", fg="white")
+loginbuton = Button(text="Login",command=login,font="Verdana 24",bg="White", fg="black").place(x=800,y=700)
+loginsuccessful = Label(text="",font="Verdana 24", bg="black", fg="white")
 loginsuccessful.pack(side=BOTTOM,)
 
-signupbuton = Button(text="signup",command=signup,font="Verdana 24",bg="White", fg="black").pack()
+signupbuton = Button(text="SignUp",command=signup,font="Verdana 24",bg="White", fg="black").place(x=1000,y=700)
 
 #close button
 closebuton = Button(text="Exit",command=close,font="Verdana 24",bg="White", fg="black")
-closebuton.pack()
+closebuton.place(x=1820,y=0)
 window.mainloop()
