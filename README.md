@@ -1,2 +1,2 @@
 # Application Input GUI
-Input Interface with python by Eren Keleş
+Input GUI with python by Eren Keleş
