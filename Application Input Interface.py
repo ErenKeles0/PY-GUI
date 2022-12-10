@@ -73,4 +73,13 @@ signupbuton = Button(text="SignUp",command=signup,font="Verdana 24",bg="White", 
 #close button
 closebuton = Button(text="Exit",command=close,font="Verdana 24",bg="White", fg="black")
 closebuton.place(x=1820,y=0)
+
+
+
+usernamelbl = Label(text="Username:",font="Verdana 24", bg="black", fg="white").place(x=510,y=500)
+passwordlbl = Label(text="Password:",font="Verdana 24", bg="black", fg="white").place(x=510,y=600)
+
+
+
+
 window.mainloop()
