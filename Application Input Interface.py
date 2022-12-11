@@ -22,19 +22,20 @@ def signup():
     #get username and password
     username=usernameentry.get()
     password=passwordentry.get()
-    
-    
+    userr=username+"/"+password
+    x=0
     if len(username)<8 or len(password)<8:
         loginsuccessful["text"]= "Please enter password and username longer than 8 characters"
-
     else:
-        for i in username:#check letters
+        for i in username:#check usernames letters
             if i in string.punctuation:#if username have special char
                 loginsuccessful["text"]= "Please do not use special characters in the username"
                 break
             else:#everything okay  
                 loginsuccessful["text"]= "SignUp Sucsessfuly"
-                users.append(username+"/"+password)
+                x=x+1
+                if x == len(username):
+                    users.append(userr)
 
 
 
